@@ -1,0 +1,29 @@
+<table *ngIf="tasks.length">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Descrição</th>
+      <th>Data</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of tasks">
+      <td>{{t.titulo}}</td>
+      <td>{{t.descricao}}</td>
+      <td>{{t.dataVencimento}}</td>
+      <td>
+        <select [value]="t.status" (change)="changeStatus(t.id, $any($event.target).value)">
+          <option value="PENDENTE">Pendente</option>
+          <option value="EM_ANDAMENTO">Em Andamento</option>
+          <option value="CONCLUIDA">Concluída</option>
+        </select>
+      </td>
+      <td>
+        <button (click)="remove(t.id)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p *ngIf="!tasks.length">Nenhuma tarefa cadastrada.</p>
