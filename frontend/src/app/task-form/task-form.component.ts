@@ -22,7 +22,6 @@ export class TaskFormComponent {
   submit() {
     if (this.form.valid) {
       this.service.create({
-        id: 0,
         titulo: this.form.value.titulo!,
         descricao: this.form.value.descricao!,
         dataVencimento: this.form.value.dataVencimento!,
